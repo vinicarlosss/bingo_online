@@ -11,7 +11,7 @@ export const Home = () =>{
             {quantity === null ? (
                 <CardsQuantity onConfirm={(qtd: number) => setQuantity(qtd)} />
             ) : (
-                <CardsInput quantity={quantity} onConfirm={(cartelas: string[][]) => navigate("/conferir", { state: { cartelas } })} />
+                <CardsInput quantity={quantity} onConfirm={(cards: string[][]) => navigate("/conferir", { state: { cards } })} />
             )}
         </>
     )

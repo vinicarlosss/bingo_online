@@ -36,7 +36,7 @@ export const CardsInput = ({
     onConfirm,
 }: {
     quantity: number;
-    onConfirm: (cartelas: string[][]) => void;
+    onConfirm: (cards: string[][]) => void;
 }) => {
 
     const [cards, setCards] = useState<string[][]>(
