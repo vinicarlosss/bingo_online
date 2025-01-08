@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { CardsQuantity } from "../../components"
+import { CardsInput, CardsQuantity } from "../../components"
 
 export const Home = () =>{
     const [quantity, setQuantity] = useState<number | null>(null);
@@ -9,7 +9,7 @@ export const Home = () =>{
             {quantity === null ? (
                 <CardsQuantity onConfirm={(qtd: number) => setQuantity(qtd)} />
             ) : (
-                null
+                <CardsInput quantity={quantity} />
             )}
         </>
     )
