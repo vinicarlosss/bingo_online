@@ -34,18 +34,18 @@ export const BingoCheck = () => {
                     <Typography variant="h6">Cartela {cardIndex + 1}</Typography>
                     <Grid container spacing={1} justifyContent="center">
                         {card.map((number) => (
-                            <Grid key={number} size={{ xs: 3, sm: 2, md: 1.5 }}>
+                            <Grid key={number} size={{xs: 2.4}}> 
                                 <Button
                                     variant="outlined"
-                                    color={checkedNumbers.has(number) ? "error" : "primary"} 
+                                    color={checkedNumbers.has(number) ? "error" : "primary"}
                                     onClick={() => handleCheckNumber(number)}
                                     style={{
-                                        width: "50px", 
-                                        height: "50px", 
-                                        borderRadius: "50%", 
+                                        width: "50px",
+                                        height: "50px",
+                                        borderRadius: "50%",
                                         fontSize: "1.2rem",
-                                        backgroundColor: checkedNumbers.has(number) ? "#f44336" : "transparent", 
-                                        color: checkedNumbers.has(number) ? "white" : "initial", 
+                                        backgroundColor: checkedNumbers.has(number) ? "#f44336" : "transparent",
+                                        color: checkedNumbers.has(number) ? "white" : "initial",
                                     }}
                                 >
                                     {number}
