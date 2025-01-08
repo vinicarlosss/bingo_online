@@ -24,14 +24,20 @@ const StyledInput = styled(TextField)(({ theme }) => ({
     margin: theme.spacing(0.5),
     width: "60px",
     [theme.breakpoints.down("sm")]: {
-        width: "50px", 
+        width: "50px",
     },
     [theme.breakpoints.down("xs")]: {
-        width: "40px", 
+        width: "40px",
     },
 }))
 
-export const CardsInput = ({ quantity }: { quantity: number }) => {
+export const CardsInput = ({
+    quantity,
+    onConfirm,
+}: {
+    quantity: number;
+    onConfirm: (cartelas: string[][]) => void;
+}) => {
 
     const [cards, setCards] = useState<string[][]>(
         Array.from({ length: quantity }, () => Array(20).fill(""))
@@ -57,15 +63,15 @@ export const CardsInput = ({ quantity }: { quantity: number }) => {
 
 
     const handleSubmit = () => {
-        const valid = cards.every(card =>
-            card.every(number => /^\d{2}$/.test(number) && parseInt(number) >= 1 && parseInt(number) <= 60)
+        const valid = cards.every((card) =>
+          card.every((number) => /^\d{2}$/.test(number) && parseInt(number) >= 1 && parseInt(number) <= 60)
         );
         if (valid) {
-            console.log("Cartelas confirmadas:", cards);
+          onConfirm(cards);
         } else {
-            alert("Preencha todas as dezenas com valores entre 01 e 60.");
+          alert("Preencha todas as dezenas com valores entre 01 e 60.");
         }
-    }
+      }
 
     return (
         <StyledSection>
