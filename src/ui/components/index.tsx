@@ -1,0 +1,1 @@
+export { CardsQuantity } from "./CardsQuantity/CardsQuantity.component"
