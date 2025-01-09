@@ -1,6 +1,7 @@
 import { Button, TextField, Typography, Grid2 as Grid } from "@mui/material"
 import { Container, styled } from "@mui/system"
 import { useState } from "react"
+import { NavBar } from "../index.tsx"
 
 const StyledSection = styled("section")(({ theme }) => ({
     minHeight: "100vh",
@@ -64,51 +65,54 @@ export const CardsInput = ({
 
     const handleSubmit = () => {
         const valid = cards.every((card) =>
-          card.every((number) => /^\d{2}$/.test(number) && parseInt(number) >= 1 && parseInt(number) <= 60)
+            card.every((number) => /^\d{2}$/.test(number) && parseInt(number) >= 1 && parseInt(number) <= 60)
         );
         if (valid) {
-          onConfirm(cards);
+            onConfirm(cards);
         } else {
-          alert("Preencha todas as dezenas com valores entre 01 e 60.");
+            alert("Preencha todas as dezenas com valores entre 01 e 60.");
         }
-      }
+    }
 
     return (
-        <StyledSection>
-            <Container maxWidth="sm" style={{ textAlign: "center" }}>
-                <Typography variant="h5" gutterBottom>
-                    Insira as dezenas para cada cartela
-                </Typography>
-                {cards.map((card, cardIndex) => (
-                    <StyledCardContainer key={cardIndex}>
-                        <Typography variant="h6" style={{ width: "100%", textAlign: "center" }}>
-                            Cartela {cardIndex + 1}
-                        </Typography>
-                        <Grid container spacing={1} justifyContent="center">
-                            {card.map((number, inputIndex) => (
-                                <Grid key={inputIndex} size={{ xs: 3, sm: 3, md: 3 }}>
-                                    <StyledInput
-                                        value={number}
-                                        onChange={(e) =>
-                                            handleInputChange(cardIndex, inputIndex, e.target.value)
-                                        }
-                                        inputProps={{ maxLength: 2 }}
-                                        placeholder="00"
-                                    />
-                                </Grid>
-                            ))}
-                        </Grid>
-                    </StyledCardContainer>
-                ))}
-                <Button
-                    variant="contained"
-                    color="primary"
-                    style={{ marginTop: "20px" }}
-                    onClick={handleSubmit}
-                >
-                    Confirmar
-                </Button>
-            </Container>
-        </StyledSection>
+        <>
+            <StyledSection>
+                <Container maxWidth="sm" style={{ textAlign: "center" }}>
+                    <Typography variant="h5" gutterBottom>
+                        Insira as dezenas para cada cartela
+                    </Typography>
+                    {cards.map((card, cardIndex) => (
+                        <StyledCardContainer key={cardIndex}>
+                            <Typography variant="h6" style={{ width: "100%", textAlign: "center" }}>
+                                Cartela {cardIndex + 1}
+                            </Typography>
+                            <Grid container spacing={1} justifyContent="center">
+                                {card.map((number, inputIndex) => (
+                                    <Grid key={inputIndex} size={{ xs: 3, sm: 3, md: 3 }}>
+                                        <StyledInput
+                                            value={number}
+                                            onChange={(e) =>
+                                                handleInputChange(cardIndex, inputIndex, e.target.value)
+                                            }
+                                            inputProps={{ maxLength: 2 }}
+                                            placeholder="00"
+                                        />
+                                    </Grid>
+                                ))}
+                            </Grid>
+                        </StyledCardContainer>
+                    ))}
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        style={{ marginTop: "20px" }}
+                        onClick={handleSubmit}
+                    >
+                        Confirmar
+                    </Button>
+                </Container>
+            </StyledSection>
+        </>
+
     )
 }
