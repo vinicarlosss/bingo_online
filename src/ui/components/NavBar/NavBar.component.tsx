@@ -3,7 +3,7 @@ import { Link } from "react-router-dom"
 
 export const NavBar = () => {
 
-    const StyledToolBar = styled(Toolbar)(({ theme }) => ({
+    const StyledToolBar = styled(Toolbar)(() => ({
         display: "flex",
         justifyContent: "space-evenly",
     }))

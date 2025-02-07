@@ -1,7 +1,6 @@
 import { Button, TextField, Typography, Grid2 as Grid } from "@mui/material"
 import { Container, styled } from "@mui/system"
 import { useState } from "react"
-import { NavBar } from "../index.tsx"
 
 const StyledSection = styled("section")(({ theme }) => ({
     minHeight: "100vh",
